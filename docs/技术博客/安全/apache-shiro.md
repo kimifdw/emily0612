@@ -47,7 +47,7 @@
 
 ##### 3.1.4 流程
 
-<img src=".\image\ShiroAuthenticationSequence.png"  />
+<img :src="$withBase('/image/shiro/ShiroAuthenticationSequence.png')"  />
 
 - 收集登录账号
 
@@ -99,7 +99,7 @@
 
 ##### 3.2.2 流程
 
-![Authorization](.\image\ShiroAuthorizationSequence.png)
+![Authorization](/image/shiro/ShiroAuthorizationSequence.png)
 
 ##### 3.2.3 参考资料
 
