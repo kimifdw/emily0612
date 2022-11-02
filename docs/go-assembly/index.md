@@ -1,6 +1,6 @@
 ---
 title: plan9 assembly 完全解析【转】
-date: '2020-10-23'
+date: 2020-10-23
 spoiler: golang,plan9,assembly
 ---
 众所周知，Go 使用了 Unix 老古董(误 们发明的 plan9 汇编。就算你对 x86 汇编有所了解，在 plan9 里还是有些许区别。说不定你在看代码的时候，偶然发现代码里的 SP 看起来是 SP，但它实际上不是 SP 的时候就抓狂了哈哈哈。
@@ -77,7 +77,6 @@ JMP -2(PC) // 同上
 JZ target // 如果 zero flag 被 set 过，则跳转
 
 ```
-
 
 ### 指令集
 
@@ -201,19 +200,20 @@ GLOBL bio<>(SB), RODATA, $16
 大部分都比较好理解，不过这里我们又引入了新的标记 `<>`，这个跟在符号名之后，表示该全局变量只在当前文件中生效，类似于 C 语言中的 static。如果在另外文件中引用该变量的话，会报 `relocation target not found` 的错误。
 
 本小节中提到的 flag，还可以有其它的取值:
->-   `NOPROF`  = 1  
+>
+>- `NOPROF`  = 1  
     (For  `TEXT`  items.) Don't profile the marked function. This flag is deprecated.
->-   `DUPOK`  = 2  
+>- `DUPOK`  = 2  
     It is legal to have multiple instances of this symbol in a single binary. The linker will choose one of the duplicates to use.
->-   `NOSPLIT`  = 4  
+>- `NOSPLIT`  = 4  
     (For  `TEXT`  items.) Don't insert the preamble to check if the stack must be split. The frame for the routine, plus anything it calls, must fit in the spare space at the top of the stack segment. Used to protect routines such as the stack splitting code itself.
->-   `RODATA`  = 8  
+>- `RODATA`  = 8  
     (For  `DATA`  and  `GLOBL`  items.) Put this data in a read-only section.
->-   `NOPTR`  = 16  
+>- `NOPTR`  = 16  
     (For  `DATA`  and  `GLOBL`  items.) This data contains no pointers and therefore does not need to be scanned by the garbage collector.
->-   `WRAPPER`  = 32  
+>- `WRAPPER`  = 32  
     (For  `TEXT`  items.) This is a wrapper function and should not count as disabling  `recover`.
->-   `NEEDCTXT`  = 64  
+>- `NEEDCTXT`  = 64  
     (For  `TEXT`  items.) This function is a closure so it uses its incoming context register.
 
 当使用这些 flag 的字面量时，需要在汇编文件中 `#include "textflag.h"`。
@@ -535,7 +535,7 @@ TEXT ·mul(SB), NOSPLIT, $0-24
 
 把这两个文件放在任意目录下，执行 `go build` 并运行就可以看到效果了。
 
-### 伪寄存器 SP 、伪寄存器 FP 和硬件寄存器 SP 
+### 伪寄存器 SP 、伪寄存器 FP 和硬件寄存器 SP
 
 来写一段简单的代码证明伪 SP、伪 FP 和硬件 SP 的位置关系。
 spspfp.s:
@@ -940,7 +940,7 @@ TEXT ·getGoID(SB), NOSPLIT, $0-16
 ```
 
 这样就实现了一个简单的获取 struct g 中的 goid 字段的小 library，作为玩具放在这里:
->https://github.com/cch123/goroutineid
+><https://github.com/cch123/goroutineid>
 
 ### SIMD
 
@@ -989,20 +989,17 @@ go compile -S:
 
 ## 特别感谢
 
-研究过程基本碰到不太明白的都去骚扰卓巨巨了，就是这位 https://mzh.io/ 大大。特别感谢他，给了不少线索和提示。
+研究过程基本碰到不太明白的都去骚扰卓巨巨了，就是这位 <https://mzh.io/> 大大。特别感谢他，给了不少线索和提示。
 
 ## 参考资料
 
-1. https://quasilyte.github.io/blog/post/go-asm-complementary-reference/#external-resources
-2. http://davidwong.fr/goasm
-3. https://www.doxsey.net/blog/go-and-assembly
-4. https://github.com/golang/go/files/447163/GoFunctionsInAssembly.pdf
-5. https://golang.org/doc/asm
+1. <https://quasilyte.github.io/blog/post/go-asm-complementary-reference/#external-resources>
+2. <http://davidwong.fr/goasm>
+3. <https://www.doxsey.net/blog/go-and-assembly>
+4. <https://github.com/golang/go/files/447163/GoFunctionsInAssembly.pdf>
+5. <https://golang.org/doc/asm>
 
 参考资料[4]需要特别注意，在该 slide 中给出的 callee stack frame 中把 caller 的 return address 也包含进去了，个人认为不是很合适。
-
-
-
 
 <!--stackedit_data:
 eyJoaXN0b3J5IjpbMTIzMjkyMzE1MSwtMjY3MTA3MzkxLDEyMz

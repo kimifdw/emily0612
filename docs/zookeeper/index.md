@@ -1,6 +1,6 @@
 ---
 title: zookeeper原理
-date: "2020-11-26"
+date: 2020-11-26
 spoiler: zookeeper
 ---
 

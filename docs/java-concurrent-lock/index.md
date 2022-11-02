@@ -1,6 +1,6 @@
 ---
 title: java concurrent locks
-date: "2021-03-21"
+date: 2021-03-21
 spoiler: locks
 ---
 
@@ -18,9 +18,9 @@ spoiler: locks
 - 阻塞状态
 - 死亡状态
 - 中断状态
-  1.  如果一个线程阻塞在**wait 方法**，或者线程的**join 方法**，再或者**sleep 方法**上，线程的中断状态被清空设置为 false，并且被 interrupt 的线程将收到一个中断异常。
-  2.  如果线程阻塞在 IO 操作，**channel 将被关闭**，并且线程的中断状态会被设置为 true，并且被 interrupt 的线程将收到一个 ClosedByInterruptException 异常。
-  3.  如果线程阻塞在**selector 方法**，中断线程的中断状态将设置为 true，并且从 select 操作立即返回，只有 selector 的 wakeup 方法被调用可能返回一个非 0 值。
+  1. 如果一个线程阻塞在**wait 方法**，或者线程的**join 方法**，再或者**sleep 方法**上，线程的中断状态被清空设置为 false，并且被 interrupt 的线程将收到一个中断异常。
+  2. 如果线程阻塞在 IO 操作，**channel 将被关闭**，并且线程的中断状态会被设置为 true，并且被 interrupt 的线程将收到一个 ClosedByInterruptException 异常。
+  3. 如果线程阻塞在**selector 方法**，中断线程的中断状态将设置为 true，并且从 select 操作立即返回，只有 selector 的 wakeup 方法被调用可能返回一个非 0 值。
 
 ![image](./thread-state.png)
 

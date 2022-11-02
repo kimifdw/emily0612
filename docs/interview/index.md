@@ -1,6 +1,6 @@
 ---
 title: 面试题收集
-date: "2020-10-29"
+date: 2020-10-29
 spoiler: linux
 ---
 

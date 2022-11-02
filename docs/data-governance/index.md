@@ -1,6 +1,5 @@
 ---
 title: 数据治理
-date: "2021-03-15"
 spoiler: bigdata
 ---
 
@@ -56,8 +55,6 @@ spoiler: bigdata
     - 强化意识
     - 奖罚机制
     - 跟踪反馈
-
-    
 
 ## 资料
 

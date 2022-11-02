@@ -1,6 +1,6 @@
 ---
 title: atom相关知识点
-date: "2020-11-28"
+date: 2020-11-28
 spoiler: atom
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: git日常易被遗忘的命令
-date: "2021-01-16"
+date: 2021-01-16
 spoiler: git
 ---
 

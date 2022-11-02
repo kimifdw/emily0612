@@ -1,6 +1,6 @@
 ---
 title: angular2学习
-date: "2020-10-21"
+date: 2020-10-21
 spoiler: learn angular2.
 ---
 
@@ -18,54 +18,69 @@ spoiler: learn angular2.
    - 绑定标签
      - property[]
      1. 标签
+
      ```
          Element property
          Component property
          Directive property
      ```
+
      2. DEMO
+
      ```
          <img [src] = "heroImageUrl">
          <hero-detail [hero]="currentHero"></hero-detail>
          <div [ngClass] = "{selected: isSelected}"></div>
      ```
+
      - event()
        1. 标签
+
        ```
             Element property
             Component property
             Directive property
        ```
+
        2. DEMO
+
        ```
            <button (click) = "onSave()">Save</button>
            <hero-detail (deleteRequest)="deleteHero()"></hero-detail>
            <div (myClick)="clicked=$event">click me</div>
        ```
+
      - 双向绑定[()]
        1. 标签
           `Event and property`
        2. DEMO
+
        ```
           <input [(ngModel)]="heroName">
        ```
+
      - Attribute[]
        1. 标签
           `Attributes(the exception)`
        2. 语法:`attr.`
        3. DEMO
+
        ```
           <button [attr.aria-label]="help">help</button>
        ```
+
      - Class[]
        1. 标签
           `class property`
        2. 语法:`[class]=value`【替换所有的 class 值】;`class.`:替换局部 class 名称
        3. DEMO
+
        ```
           <div [class.special]="isSpecial">Special</div>
        ```
+
        4. NgClass 代替
+
        ```
            setClasses() {
              let classes =  {
@@ -77,15 +92,19 @@ spoiler: learn angular2.
            }
            <div [ngClass]="{cssClass: setClass()}"></div>
        ```
+
      - Style[]
        1. 标签
           `style property`
        2. 语法:`style.value`
        3. DEMO
+
        ```
           <button [style.color] = "isSpecial ? 'red' : 'green'">
        ```
+
        4. NgStyle 代替
+
        ```
            setStyles() {
              let styles = {
@@ -100,8 +119,10 @@ spoiler: learn angular2.
              This div is italic, normal weight, and extra large (24px).
            </div>
        ```
+
      - template
        1. 引用变量#
+
        ```
            <!-- phone refers to the input element; pass its `value` to an event handler -->
            <input #phone placeholder="phone number">
@@ -110,7 +131,9 @@ spoiler: learn angular2.
            <input ref-fax placeholder="fax number">
            <button (click)="callFax(fax.value)">Fax</button>
        ```
+
        2. form 表单【theForm 变量可以用来校验表单的值`theForm.form.valid`】
+
        ```
            <form (ngSubmit)="onSubmit(theForm)" #theForm="ngForm">
              <div class="form-group">
@@ -121,11 +144,13 @@ spoiler: learn angular2.
              <button type="submit" [disabled]="!theForm.form.valid">Submit</button>
            </form>
        ```
+
        3. 定义 input 和 output 属性
           `@Input(),@Output()`:单个属性;
           `inputs,outputs`: 多个属性
        4. 操作符
        - |:以|后面的形式输出
+
        ```
            <!-- Pipe chaining: convert title to uppercase, then to lowercase -->
            <div>
@@ -135,10 +160,13 @@ spoiler: learn angular2.
            <!-- 以JSON格式输出-->
            <div>{{currentHero | json}}</div>
        ```
+
        - ?.: 防止变量或对象为 null 时,输出异常
+
        ```
           The current hero's name is {{currentHero?.firstName}}
        ```
+
 4. 数据绑定【**只能在 properties 和 events 中使用**】:
 
    - `{{value}}`: 绑定页面的值,JS 变量值的绑定
@@ -152,10 +180,13 @@ spoiler: learn angular2.
    - 总结【其中`[],()`与`bind-,on-bindon-`效果一致】
      - 数据到视图
        1. 语法
+
        ```angular
        {{ expression }} [target]="expression" bind-target="expression"
        ```
+
        2. 绑定类型
+
        ```
        Interpolation
        Property
@@ -163,20 +194,25 @@ spoiler: learn angular2.
        Class
        Stype
        ```
+
      - 视图到数据绑定
        1. 语法
+
        ```
        (target)="statement"
        on-target="statement"
        ```
+
        2. 绑定类型
           `event`
      - 双向绑定
        1. 语法
+
        ```
        [(target)] = "expression"
        bind-target="expression"
        ```
+
        2. 绑定类型:双向绑定
 
 5. 事件定义: `$event`【用于绑定所有事件变量】,DOM 元素的 event 事件;
@@ -250,11 +286,13 @@ let car = injector.get(Car);
 - _\*ngFor_
   - 绑定循环索引 i(初始化为 0)`<li *ngFor="let hero of heroes;let i=index">{{i+1}}-{{hero-name}}</li>`
   - 防止 DOM 修改元素
+
   ```
       trackByHeroes(index: number, hero: Hero) { return hero.id; }
       <div *ngFor="let hero of heroes; trackBy:trackByHeroes">({{hero.id}}) {{hero.fullName}}</div>
       <div *ngFor="let hero of heroes" *ngForTrackBy="trackByHeroes">({{hero.id}}) {{hero.fullName}}</div>
   ```
+
 - _ngSwitch_: 类似于 java 的 switch
 
 ```
@@ -276,7 +314,6 @@ let car = injector.get(Car);
 
 1. Http Promise
    > http.get
-
 
     ```js
         this.http.get(this.heroesUrl)

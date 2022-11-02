@@ -1,11 +1,18 @@
 import { defineUserConfig } from 'vuepress'
-import { defaultTheme } from 'vuepress'
+import { hopeTheme } from 'vuepress-theme-hope'
+import { searchPlugin } from '@vuepress/plugin-search'
 
 export default ({
     lang: 'zh-CN',
     title: 'Emily Blog',
     description: 'Emily的博客',
-    theme: defaultTheme({
+    theme: hopeTheme({
+        lastUpdated: true,
+        plugins: {
+            mdEnhance: {
+                codetabs: true
+            },
+        },
         navbar: [
             {
                 text: '首页',
@@ -16,5 +23,8 @@ export default ({
                 link: '/工具/maven.html'
             }
         ]
-    })
+    }),
+    plugins: [
+        searchPlugin({})
+    ]
 })

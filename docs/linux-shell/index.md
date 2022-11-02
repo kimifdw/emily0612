@@ -1,12 +1,14 @@
 ---
 title: linux指令集
-date: "2020-12-13"
+date: 2020-12-13
 spoiler: linux 指令集
 ---
 
 
 ## 常用指令
+
 1. `history`。查询用户操作日志
+
 > export HISTTIMEFORMAT="%F %T `who -u am i 2>/dev/null| awk '{print $NF}'|sed -e 's/[()]//g'` `whoami` "
 
 ![image](./history.png)
@@ -101,6 +103,7 @@ spoiler: linux 指令集
       1. sy。系统调用消耗的 CPU 时间百分比
       1. id。CPU 处在空间状态的时间百分比
       1. wa。等待 IO 的 CPU 时间
+
 1. ### pidstat
 
    > 用来监控全部或指定进程的 cpu、内存、线程、设备 IO 等系统资源的占用情况
@@ -125,7 +128,7 @@ spoiler: linux 指令集
 1. 尽量不要使用 root 直接登录系统，应使用一般账号登录系统，有需要再转换身份
 
 ## 资料
- 
+
 1. [CURL -w 参数详解](https://blog.csdn.net/weifangan/article/details/80741981)
 2. [curl官方说明书](https://curl.se/docs/manpage.html)
 3. [curl-cheat-sheet](https://curl.github.io/curl-cheat-sheet/http-sheet.html)

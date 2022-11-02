@@ -1,6 +1,6 @@
 ---
 title: kafka原理
-date: "2021-01-19"
+date: 2021-01-19
 spoiler: 原理
 ---
 
@@ -57,20 +57,25 @@ spoiler: 原理
    - 1。只要 leader 应答就可以发送下一条，只确保 leader 发送成功
    - all[-1]。需要所有 follower 都完成 leader 的同步才会发送下一条，确保 leader 发送成功和所有的副本完成备份
 3. CP【一致性和分区容错性】配置
+
    ```bash
    request.required.acks=-1
    min.insync.replicas = ${N/2 + 1}
    unclean.leader.election.enable = false
    ```
+
    AP【可用性和分区容错性】配置
+
    ```bash
    request.required.acks=1
    min.insync.replicas = 1
    unclean.leader.election.enable = false
    ```
+
 4. Producer写入
    Server端的I/O线程统一将请求中的数据写入到操作系统的PageCache后立即返回，当消息条数到达一定阈值后，Kafka应用本身或操作系统内核会触发强制刷盘操作
    ![image](./producer.png)
+
 ### kafka 消息备份和同步
 
 1. 根据分区的多副本策略来解决消息的备份问题
@@ -112,7 +117,7 @@ spoiler: 原理
 - 消费者的峰值带宽
 - 消费者的消费能力。同一个消费组里同一个分区只能被一个消费者消费
 
-2.  选取合适的分区数量
+2. 选取合适的分区数量
     > 建议分区的数量一定要大于等于消费者的数量来实现最大并发
 
 - Num=max(T/PT,T/CT)=T/min(PT,CT)
@@ -138,6 +143,7 @@ spoiler: 原理
 1. 消息体。
 
 #### 文件存储设计特点
+
 1. Kafka把topic中一个parition大文件分成多个小文件段，通过多个小文件段，就容易定期清除或删除已经消费完文件，减少磁盘占用。
 2. 通过**索引**信息可以快速定位message和确定response的最大大小。
 3. 通过**index元数据**全部映射到memory，可以避免segment file的IO磁盘操作。

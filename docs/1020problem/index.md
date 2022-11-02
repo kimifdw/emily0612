@@ -1,7 +1,8 @@
 ---
 title: 1020随笔
-date: "2020-10-20"
+date: 2020-10-20
 spoiler: zookeeper,uuid,question
+footer: true
 ---
 
 # zookeeper 问题

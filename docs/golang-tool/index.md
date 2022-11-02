@@ -1,6 +1,6 @@
 ---
 title: golang命令集
-date: "2020-10-23"
+date: 2020-10-23
 spoiler: golang
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: redis 问题
-date: "2021-03-25"
+date: 2021-03-25
 spoiler: redis question
 ---
 

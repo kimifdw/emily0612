@@ -1,6 +1,6 @@
 ---
 title: 线程安全性
-date: "2020-10-21"
+date: 2020-10-21
 spoiler: thread safe.
 ---
 

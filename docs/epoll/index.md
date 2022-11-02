@@ -1,6 +1,6 @@
 ---
 title: epoll 介绍
-date: "2021-03-16"
+date: 2021-03-16
 spoiler: epoll
 ---
 
@@ -14,9 +14,11 @@ spoiler: epoll
 6. IRQ。Interrupt ReQuest，中断请求。
 
 ## 进程状态
+
 ![image](./process-state.png)
 
 ## 两个阶段
+
 1. 硬件接口道内核态
 2. 内核态到用户态
 3. 如第一个阶段阻塞，则为**阻塞IO**；两个阶段有一个阻塞则为**同步IO**（linux的epoll、Mac的kqueue），两个阶段都不阻塞则为**异步IO**（window的AIO）
@@ -99,6 +101,7 @@ spoiler: epoll
      - 配置`SO_REUSEPORT`实现内核级的负载均衡
      - 增加`EPOLLEXCLUSIVE`标识，保证一个事件发生时只有一个线程被唤醒【linux 4.5 内核】
 - ET 模式和 LT 模式
+
 > ET模式仅触发一次，LT模式一直触发
 
   1. 定义。
